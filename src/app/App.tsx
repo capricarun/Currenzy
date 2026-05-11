@@ -27,7 +27,7 @@ export default function App() {
   }
 
   return (
-    <BrowserRouter>
+    <BrowserRouter basename="/Currenzy">
       <AppProvider>
         <Routes>
           <Route path="/" element={<Layout />}>
