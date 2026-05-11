@@ -7,8 +7,9 @@
 
 /* Note: Avenir Next and Krungthep are system fonts and will fallback to system sans-serif */
 
-/* Material Icons ligature rendering fix */
+/* Material Icons ligature rendering fix + font name correction for Figma-exported names */
 span[class*="Material_Icons"] {
+  font-family: 'Material Icons', sans-serif;
   font-feature-settings: 'liga';
   -webkit-font-feature-settings: 'liga';
   -webkit-font-smoothing: antialiased;
@@ -24,7 +25,7 @@ span[class*="Material_Icons"] {
   direction: ltr;
 }
 
-/* Fix Figma-exported font names: "Material Icons Outlined:Regular" -> "Material Icons Outlined" */
+/* Override font-family for Outlined and Round variants (must come after base rule) */
 span[class*="Material_Icons_Outlined"] {
   font-family: 'Material Icons Outlined', sans-serif;
 }
