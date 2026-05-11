@@ -5,15 +5,30 @@
 /* Google Fonts - Inter */
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap');
 
+/* Note: Avenir Next and Krungthep are system fonts and will fallback to system sans-serif */
+
 /* Material Icons ligature rendering fix */
 span[class*="Material_Icons"] {
   font-feature-settings: 'liga';
   -webkit-font-feature-settings: 'liga';
   -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
   font-style: normal;
+  font-weight: normal;
   line-height: 1;
   letter-spacing: normal;
   text-transform: none;
+  display: inline-block;
+  white-space: nowrap;
+  word-wrap: normal;
+  direction: ltr;
 }
 
-/* Note: Avenir Next and Krungthep are system fonts and will fallback to system sans-serif */
+/* Fix Figma-exported font names: "Material Icons Outlined:Regular" -> "Material Icons Outlined" */
+span[class*="Material_Icons_Outlined"] {
+  font-family: 'Material Icons Outlined', sans-serif;
+}
+
+span[class*="Material_Icons_Round"] {
+  font-family: 'Material Icons Round', sans-serif;
+}
