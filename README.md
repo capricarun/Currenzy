@@ -1,229 +1,148 @@
 # Currenzy - Currency Conversion App
 
-A beautiful, modern currency conversion mobile app built with React and Vite. Convert between 12 major world currencies with real-time rates and a smooth, intuitive interface.
-
-![Currenzy App](./preview.md)
+A fully interactive, production-quality currency conversion application built with React, TypeScript, Tailwind CSS, and shadcn/ui components.
 
 ## Features
 
-✨ **Beautiful UI**
-- Smooth splash screen animation
-- Responsive mobile-first design
-- Modern gradient effects and transitions
-- Accessible color scheme
+### 1. **Currency Conversion**
+- Real-time currency conversion between multiple currencies
+- Swap currencies with a single click
+- View detailed exchange rates
+- Support for 10+ global currencies
 
-💱 **Currency Conversion**
-- Support for 12 major currencies (USD, EUR, GBP, INR, JPY, AUD, CAD, CHF, CNY, MXN, SGD, HKD)
-- Real-time exchange rate calculations
-- Quick swap between currencies
-- Live rate display with detailed breakdown
+### 2. **Favorites Management**
+- Save frequently used currency pairs
+- Quick access to saved pairs
+- View charts for favorite pairs
+- Delete unwanted pairs
 
-🔄 **Smart Features**
-- Recent conversions history
-- Favorite conversions (coming soon)
-- Alert notifications (coming soon)
-- Multi-currency support
+### 3. **Rate Alerts**
+- Create custom price alerts
+- Configure alert conditions (rises above, falls below, % change)
+- Choose notification method (push, email, or both)
+- Monitor active alerts with toggle switches
+- View triggered alerts history
 
-📱 **Mobile Optimized**
-- Touch-friendly interface
-- Bottom navigation bar
-- Smooth animations and transitions
-- Optimized for all mobile devices
+### 4. **Detailed Rate Charts**
+- Interactive rate charts with multiple time periods (1D, 5D, 1M, 1Y, 5Y, Max)
+- Period summary statistics (Open, Close, High, Low)
+- Visual representation of rate changes
+- Percentage change indicators
+
+### 5. **User Profile**
+- Manage user preferences (currency, language, theme)
+- Configure notification settings
+- Access help and support
+- Profile editing capabilities
 
 ## Tech Stack
 
-- **React 18** - UI library
-- **Vite** - Build tool
-- **CSS3** - Styling with CSS variables
-- **JavaScript ES6+** - Modern JavaScript
-
-## Installation
-
-### Prerequisites
-- Node.js (v14 or higher)
-- npm or yarn
-
-### Setup
-
-1. **Clone the repository**
-   ```bash
-   git clone https://github.com/yourusername/currenzy.git
-   cd currenzy
-   ```
-
-2. **Install dependencies**
-   ```bash
-   npm install
-   ```
-
-3. **Start development server**
-   ```bash
-   npm run dev
-   ```
-   The app will open at `http://localhost:5173`
-
-## Build & Deploy
-
-### Build for Production
-```bash
-npm run build
-```
-
-This creates an optimized production build in the `dist` folder.
-
-### Deploy to GitHub Pages
-
-1. **Update `vite.config.js`** - Already configured with base path `/currenzy/`
-
-2. **Install gh-pages** (already in dependencies)
-   ```bash
-   npm install gh-pages --save-dev
-   ```
-
-3. **Deploy**
-   ```bash
-   npm run deploy
-   ```
-
-4. **Configure GitHub**
-   - Go to your repository Settings
-   - Navigate to Pages
-   - Select "gh-pages" as the source branch
-   - Your app will be live at `https://yourusername.github.io/currenzy/`
+- **React 18.3** - UI framework
+- **TypeScript** - Type safety
+- **React Router DOM 7.15** - Client-side routing
+- **Tailwind CSS 4.1** - Utility-first styling
+- **shadcn/ui** - High-quality component library
+- **Radix UI** - Accessible component primitives
+- **Lucide React** - Icon library
 
 ## Project Structure
 
 ```
-currenzy/
-├── src/
+src/
+├── app/
+│   ├── App.tsx                 # Main app with routing
 │   ├── components/
-│   │   ├── SplashScreen.jsx       # Splash screen with logo
-│   │   ├── SplashScreen.css       # Splash screen styles
-│   │   ├── HomeScreen.jsx         # Main converter interface
-│   │   └── HomeScreen.css         # Converter styles
-│   ├── App.jsx                    # Main app component
-│   ├── main.jsx                   # React entry point
-│   └── index.css                  # Global styles
-├── index.html                     # HTML template
-├── vite.config.js                # Vite configuration
-├── package.json                   # Dependencies
-└── .gitignore                     # Git ignore rules
+│   │   ├── Layout.tsx          # Main layout with bottom navigation
+│   │   ├── screens/            # Screen components
+│   │   │   ├── SplashScreen.tsx
+│   │   │   ├── ConvertScreen.tsx
+│   │   │   ├── FavoritesScreen.tsx
+│   │   │   ├── AddPairScreen.tsx
+│   │   │   ├── AlertsScreen.tsx
+│   │   │   ├── CreateAlertScreen.tsx
+│   │   │   ├── ProfileScreen.tsx
+│   │   │   └── RatesScreen.tsx
+│   │   └── ui/                 # shadcn/ui components
+│   └── context/
+│       └── AppContext.tsx      # Global state management
+├── imports/                    # Figma-imported components
+└── styles/
+    ├── fonts.css              # Font imports
+    ├── theme.css              # Theme variables
+    └── tailwind.css           # Tailwind config
 ```
 
 ## Key Components
 
-### SplashScreen
-- Animated logo with pop effect
-- Smooth title reveal
-- Progress bar animation
-- Auto-transitions to home screen after 2.5 seconds
+### Navigation
+- **Bottom Tab Navigation**: 4 main tabs (Convert, Favourite, Alerts, Profile)
+- **Back Navigation**: Available on sub-screens
+- **Route-based Active States**: Highlights current tab
 
-### HomeScreen
-- Currency selection dropdown
-- Amount input with validation
-- Swap button for quick currency reversal
-- Large result display with current exchange rate
-- Recent conversions list
-- Bottom navigation with 4 tabs
+### State Management
+- **AppContext**: Centralized state using React Context API
+- **Favorites**: Manage saved currency pairs
+- **Alerts**: Create and monitor price alerts
+- **Currencies**: List of available currencies
 
-## Customization
+### Interactive Features
+- **Currency Swap**: Instantly swap from/to currencies
+- **Alert Monitoring**: Toggle alert monitoring on/off
+- **Favorite Actions**: View charts or delete favorites
+- **Tab Selection**: Period selection for rate charts
 
-### Change Colors
-Edit CSS variables in `src/index.css`:
-```css
-:root {
-  --primary-blue: #0066ff;
-  --primary-light: #5a9eff;
-  --dark-bg: #ffffff;
-  --text-dark: #1a1a1a;
-  /* ... more variables */
-}
-```
-
-### Add More Currencies
-1. Add currency data to `CURRENCIES` object in `HomeScreen.jsx`
-2. Add exchange rates to `EXCHANGE_RATES` object
-3. Update `getCountryCode()` function for flag display
-
-### Update Exchange Rates
-Currently using mock rates. To use real-time rates:
-1. Sign up for an API like:
-   - OpenExchangeRates.org
-   - XE.com
-   - CurrencyAPI.com
-2. Replace the mock `EXCHANGE_RATES` object with API calls
-
-## API Integration (Coming Soon)
-
-Replace mock rates with real-time data:
-```javascript
-// Example: Using OpenExchangeRates API
-const fetchRates = async () => {
-  const response = await fetch(
-    `https://openexchangerates.org/api/latest.json?app_id=YOUR_API_KEY&base=${fromCurrency}`
-  )
-  const data = await response.json()
-  return data.rates
-}
-```
-
-## Browser Support
-
-- Chrome/Edge (Latest)
-- Firefox (Latest)
-- Safari (Latest)
-- Mobile browsers (iOS Safari, Chrome Mobile)
-
-## Performance
-
-- **Build Size**: ~50KB (gzipped)
-- **Load Time**: <1s
-- **Lighthouse Score**: 95+ performance
+## Responsive Design
+- Mobile-first design (393px viewport)
+- 8px spacing system
+- Consistent component sizing
+- Touch-friendly interactions
 
 ## Accessibility
+- Semantic HTML structure
+- ARIA labels where appropriate
+- Keyboard navigation support
+- Focus visible states
+- Material Icons for universal iconography
 
-- ✅ Semantic HTML
-- ✅ ARIA labels
-- ✅ Keyboard navigation
-- ✅ High contrast colors
-- ✅ Touch-friendly buttons
+## Color Palette
+- **Primary Blue**: #0077e9
+- **Secondary Purple**: #9b60e1
+- **Success Green**: #2a9d90
+- **Error Red**: #ef4444
+- **Background**: #fafafa
+- **Text Primary**: #18181b
+- **Text Secondary**: #71717a
+
+## Routes
+
+| Route | Description |
+|-------|-------------|
+| `/convert` | Main currency conversion screen |
+| `/favorites` | Saved currency pairs list |
+| `/favorites/add` | Add new currency pair to favorites |
+| `/alerts` | View and manage price alerts |
+| `/alerts/create` | Create a new price alert |
+| `/profile` | User profile and settings |
+| `/rates/:from/:to` | Detailed rate chart view |
 
 ## Future Enhancements
+- Real currency API integration
+- Historical rate data
+- Push notification system
+- Multi-currency comparison
+- Offline mode support
+- Export transaction history
+- Widget support
 
-- [ ] Real-time API integration
-- [ ] Offline mode with cached rates
-- [ ] Favorite currencies list
-- [ ] Push notifications for rate alerts
-- [ ] Historical rate charts
-- [ ] Multiple theme support
-- [ ] Currency calculator
-- [ ] Crypto currency support
+## Design Fidelity
+This implementation closely matches the original Figma design including:
+- Exact color schemes and gradients
+- Typography hierarchy
+- Spacing and layout
+- Interactive states
+- Component structure
+- Visual consistency
 
-## Contributing
+---
 
-1. Fork the repository
-2. Create a feature branch (`git checkout -b feature/amazing-feature`)
-3. Commit changes (`git commit -m 'Add amazing feature'`)
-4. Push to branch (`git push origin feature/amazing-feature`)
-5. Open a Pull Request
-
-## License
-
-MIT License - see LICENSE file for details
-
-## Support
-
-For issues, questions, or suggestions:
-1. Open an issue on GitHub
-2. Provide detailed description
-3. Include screenshots if applicable
-
-## Author
-
-Created with ❤️ by Your Name
-
-## Acknowledgments
-
-- Icons from system fonts
-- Flag images from flagcdn.com
-- Inspired by modern fintech applications
+Built with ❤️ using React, TypeScript, and shadcn/ui
