@@ -5,4 +5,15 @@
 /* Google Fonts - Inter */
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap');
 
+/* Material Icons ligature rendering fix */
+span[class*="Material_Icons"] {
+  font-feature-settings: 'liga';
+  -webkit-font-feature-settings: 'liga';
+  -webkit-font-smoothing: antialiased;
+  font-style: normal;
+  line-height: 1;
+  letter-spacing: normal;
+  text-transform: none;
+}
+
 /* Note: Avenir Next and Krungthep are system fonts and will fallback to system sans-serif */
